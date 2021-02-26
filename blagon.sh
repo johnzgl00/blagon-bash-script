@@ -1,8 +1,23 @@
 #! /bin/bash
+blue='\033[1;34m'
 red='\033[1;31m'
 bold='\033[1;37m'
 green='\033[1;32m'
 NC='\033[0m'
+clear
+echo -e "${blue} ▄▄▄▄▄▄▄▄▄▄   ▄            ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄        ▄ ${NC}"
+echo -e "${blue}▐░░░░░░░░░░▌ ▐░▌          ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░▌      ▐░▌${NC}"
+echo -e "${blue}▐░█▀▀▀▀▀▀▀█░▌▐░▌          ▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░▌░▌     ▐░▌${NC}"
+echo -e "${blue}▐░▌       ▐░▌▐░▌          ▐░▌       ▐░▌▐░▌          ▐░▌       ▐░▌▐░▌▐░▌    ▐░▌${NC}"
+echo -e "${blue}▐░█▄▄▄▄▄▄▄█░▌▐░▌          ▐░█▄▄▄▄▄▄▄█░▌▐░▌ ▄▄▄▄▄▄▄▄ ▐░▌       ▐░▌▐░▌ ▐░▌   ▐░▌${NC}"
+echo -e "${blue}▐░░░░░░░░░░▌ ▐░▌          ▐░░░░░░░░░░░▌▐░▌▐░░░░░░░░▌▐░▌       ▐░▌▐░▌  ▐░▌  ▐░▌${NC}"
+echo -e "${blue}▐░█▀▀▀▀▀▀▀█░▌▐░▌          ▐░█▀▀▀▀▀▀▀█░▌▐░▌ ▀▀▀▀▀▀█░▌▐░▌       ▐░▌▐░▌   ▐░▌ ▐░▌${NC}"
+echo -e "${blue}▐░▌       ▐░▌▐░▌          ▐░▌       ▐░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌    ▐░▌▐░▌${NC}"
+echo -e "${blue}▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░▌       ▐░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌▐░▌     ▐░▐░▌${NC}"
+echo -e "${blue}▐░░░░░░░░░░▌ ▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌      ▐░░▌${NC}"
+echo -e "${blue} ▀▀▀▀▀▀▀▀▀▀   ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀        ▀▀ ${NC}"
+
+
 echo -e "${green}attack 1${NC}"
 echo -e "${green}recon 2${NC}"
 echo "select action :"
@@ -17,13 +32,13 @@ fi
 
 if (($action == 1))
 then
-	
+		echo -e "${bold}Attack selected${NC}"
 		echo -e "${green}Metasploit 1${NC}"
 		echo -e "${green}Hping3 2${NC}"
 		echo -e "${green}Aircrack-ng 3${NC}"
 		echo -e "${green}Wifite 4${NC}"
 	read type
-	if (($type == 1))
+	if (($type == 1))	
 	then
 		sudo msfconsole
 	fi
@@ -74,14 +89,26 @@ then
 	fi
 	if (($type == 4))
 	then
-		echo "enter your own command:"
-	        read command
-		sudo "$command"
+		echo -e "${green}output 1${NC}"
+		echo -e "${green}no output 2${NC}"
+		read output
+		if (($output == 1))
+		then
+			echo -e "${green}Enter interface:${NC}"
+			read interface
+			echo -e "${green}Enter file name:${NC}"
+			read name
+			sudo tshark -i "$interface" -w "$name".pcap
+		fi
+		if (($output == 2))
+		then
+			echo -e "${green}Enter interface:${NC}"
+			read interface
+			sudo tshark -i "$interface"
+		fi
 	fi
 	if (($type == 5))
 	then
-	        echo "enter your own command:"
-		read command
-		sudo "$command"
+	    sudo recon-ng
 	fi
 fi
