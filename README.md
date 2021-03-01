@@ -16,6 +16,6 @@ It is programmed to work on kali linux but it can work on many linux distros(you
  - Nmap
 
 # OS supported:
- - Kali
+ - Kali (tested)
  - Ubuntu (tools needed)
- - Debian
+ - Debian (tools needed)
