@@ -14,7 +14,8 @@ It is programmed to work on kali linux but it can work on many linux distros(you
  - Tshark
  - Netdiscover
  - Nmap
-
+ - Gobuster
+ - Nikto
 # OS supported:
  - Kali (tested)
  - Ubuntu (tools needed)
