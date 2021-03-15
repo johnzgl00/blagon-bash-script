@@ -87,7 +87,7 @@ then
 		read wordlist
 		sudo gobuster dir -u http://"$ip" -w "$wordlist"
 	fi
-	if (($type == 5))
+	if (($type == 6))
 	then
 		echo "enter ip address"
 		read ip
