@@ -37,6 +37,8 @@ then
 		echo -e "${green}Hping3 2${NC}"
 		echo -e "${green}Aircrack-ng 3${NC}"
 		echo -e "${green}Wifite 4${NC}"
+		echo -e "${green}Gobuster 5${NC}"
+		echo -e "${green}Nikto 6${NC}"
 	read type
 	if (($type == 1))	
 	then
@@ -77,7 +79,22 @@ then
 	then
 		sudo wifite
 	fi
+	if (($type == 5))
+	then
+		echo  "enter ip address"
+		read ip
+		echo "enter wordlist location + wordlist"
+		read wordlist
+		sudo gobuster dir -u http://"$ip" -w "$wordlist"
+	fi
+	if (($type == 5))
+	then
+		echo "enter ip address"
+		read ip
+		sudo nikto -host http://"$ip"
+	fi
 fi
+
 
 
 
